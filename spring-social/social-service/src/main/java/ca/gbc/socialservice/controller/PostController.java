@@ -21,19 +21,19 @@ public class PostController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createProduct(@RequestBody PostRequest postRequest){
+    public void createPost(@RequestBody PostRequest postRequest){
         postService.createPost(postRequest);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<PostResponse> getAllProducts(){
+    public List<PostResponse> getAllPosts(){
         return postService.getAllPosts();
     }
 
     @DeleteMapping("/{postId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteProduct(@PathVariable("postId") String postId){
+    public void deletePost(@PathVariable("postId") String postId){
         postService.deleteProduct(postId);
     }
 }

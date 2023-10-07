@@ -1,26 +1,27 @@
 package ca.gbc.socialservice.entities;
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDateTime;
-
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(value = "post")
-public class Post {
+@Entity
+public class Comment {
 
     @Id
-    private String id;
+    @GeneratedValue
+    private Long id;
     private String content;
     private String timestamp;
+    // Other comment properties
 
+    @ManyToOne
+    private PostEnt post;
 
+    @ManyToOne
+    private UserEnt user;
 
+    // Getters and setters
 }

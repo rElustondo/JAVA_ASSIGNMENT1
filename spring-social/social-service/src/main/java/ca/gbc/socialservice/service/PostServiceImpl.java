@@ -2,7 +2,7 @@ package ca.gbc.socialservice.service;
 
 import ca.gbc.socialservice.dto.PostRequest;
 import ca.gbc.socialservice.dto.PostResponse;
-import ca.gbc.socialservice.entities.Post;
+import ca.gbc.socialservice.model.Post;
 import ca.gbc.socialservice.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
