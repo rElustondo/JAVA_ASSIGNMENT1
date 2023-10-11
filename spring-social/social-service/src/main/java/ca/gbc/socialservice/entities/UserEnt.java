@@ -1,6 +1,7 @@
 package ca.gbc.socialservice.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,7 +12,10 @@ public class UserEnt {
     @Id
     private Long id;
     @Getter
+    @Setter
     private String username;
+    @Getter
+    @Setter
     private String email;
 
     public UserEnt(String username, String email){

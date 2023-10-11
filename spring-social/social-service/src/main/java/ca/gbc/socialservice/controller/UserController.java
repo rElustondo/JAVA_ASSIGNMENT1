@@ -1,12 +1,10 @@
 package ca.gbc.socialservice.controller;
 
-import ca.gbc.socialservice.dto.PostRequest;
-import ca.gbc.socialservice.dto.PostResponse;
-import ca.gbc.socialservice.dto.UserRequest;
-import ca.gbc.socialservice.dto.UserResponse;
+import ca.gbc.socialservice.dto.*;
 import ca.gbc.socialservice.service.PostServiceImpl;
 import ca.gbc.socialservice.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +27,11 @@ public class UserController {
     public List<UserResponse> getAllUsers(){
         return userService.getAllUsers();
     }
-
+    @PutMapping({"/{userId}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProduct(@PathVariable("userId") Long userId, @RequestBody UserRequest userRequest) {
+        userService.updateUser(userId, userRequest);
+    }
     @DeleteMapping("/{userId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable("userId") Long userId){
