@@ -28,7 +28,7 @@ public class CommentController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<CommentResponse> getAllUsers(){
+    public List<CommentResponse> getAllComments(){
         return commentService.getAllComments();
     }
     @PutMapping({"/{commentId}"})
@@ -38,7 +38,7 @@ public class CommentController {
     }
     @DeleteMapping("/{commentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable("commentId") Long commentId){
+    public void deleteComment(@PathVariable("commentId") Long commentId){
         commentService.deleteComment(commentId);
     }
 }
