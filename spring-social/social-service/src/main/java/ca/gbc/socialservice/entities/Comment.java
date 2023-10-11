@@ -1,9 +1,6 @@
 package ca.gbc.socialservice.entities;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -14,8 +11,10 @@ public class Comment {
     @Id
     private Long id;
     @Getter
+    @Setter
     private String content;
     @Getter
+    @Setter
     private String timestamp;
     // Other comment properties
 
@@ -30,11 +29,10 @@ public class Comment {
     public Long getId() {
         return id;
     }
-//    @ManyToOne
-//    private PostEnt post;
-//
-//    @ManyToOne
-//    private UserEnt user;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UserEnt user;
 
     // Getters and setters
 }

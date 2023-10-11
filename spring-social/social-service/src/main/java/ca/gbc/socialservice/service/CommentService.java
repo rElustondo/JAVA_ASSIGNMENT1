@@ -10,5 +10,7 @@ public interface CommentService {
 
     void deleteComment(Long productId);
 
+    void updateComment(Long productId, CommentRequest commentRequest);
+
     List<CommentResponse> getAllComments();
 }

@@ -2,6 +2,7 @@ package ca.gbc.socialservice.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -30,9 +31,7 @@ public class UserEnt {
         return email;
     }
 
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<PostEnt> posts;
-//
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//    private List<Comment> comments;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 }

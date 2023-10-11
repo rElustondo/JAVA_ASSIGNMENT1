@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,8 +27,19 @@ public class CommentServiceImpl implements CommentService{
     }
 
     @Override
-    public void deleteComment(Long userId) {
-        commentRepository.deleteById(userId);
+    public void deleteComment(Long commentId) {
+        commentRepository.deleteById(commentId);
+    }
+
+    @Override
+    public void updateComment(Long commentId,CommentRequest commentRequest) {
+        Optional<Comment> optionalComment = commentRepository.findById(commentId);
+        if(optionalComment.isPresent()) {
+            Comment comment = optionalComment.get();
+            comment.setContent(commentRequest.getContent());
+            comment.setTimestamp(commentRequest.getTimestamp());
+            commentRepository.save(comment);
+        }
     }
 
     @Override

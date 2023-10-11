@@ -4,6 +4,8 @@ package ca.gbc.socialservice.entities;
 import jakarta.persistence.*;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import java.util.List;
+
 @Entity
 public class PostEnt {
 
@@ -13,8 +15,7 @@ public class PostEnt {
     private String content;
     private String timestamp;
 
-    @DBRef
-    @ManyToOne
-    private UserEnt user;
+
+
 
 }

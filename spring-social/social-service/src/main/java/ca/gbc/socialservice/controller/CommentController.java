@@ -7,7 +7,9 @@ import ca.gbc.socialservice.dto.UserResponse;
 import ca.gbc.socialservice.service.CommentServiceImpl;
 import ca.gbc.socialservice.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,7 +31,11 @@ public class CommentController {
     public List<CommentResponse> getAllUsers(){
         return commentService.getAllComments();
     }
-
+    @PutMapping({"/{commentId}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProduct(@PathVariable("commentId") Long commentId, @RequestBody CommentRequest commentRequest) {
+        commentService.updateComment(commentId, commentRequest);
+    }
     @DeleteMapping("/{commentId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteUser(@PathVariable("commentId") Long commentId){
