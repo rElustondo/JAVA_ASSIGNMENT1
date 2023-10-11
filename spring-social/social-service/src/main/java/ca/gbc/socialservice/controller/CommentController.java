@@ -33,7 +33,7 @@ public class CommentController {
     }
     @PutMapping({"/{commentId}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateProduct(@PathVariable("commentId") Long commentId, @RequestBody CommentRequest commentRequest) {
+    public void updateComment(@PathVariable("commentId") Long commentId, @RequestBody CommentRequest commentRequest) {
         commentService.updateComment(commentId, commentRequest);
     }
     @DeleteMapping("/{commentId}")

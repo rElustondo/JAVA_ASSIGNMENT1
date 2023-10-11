@@ -9,8 +9,9 @@ public interface PostService {
 
     void createPost(PostRequest postRequest);
 
-    void deleteProduct(String productId);
+    void deletePost(String postId);
 
+    void updatePost(String postId, PostRequest postRequest);
     List<PostResponse> getAllPosts();
 
 }

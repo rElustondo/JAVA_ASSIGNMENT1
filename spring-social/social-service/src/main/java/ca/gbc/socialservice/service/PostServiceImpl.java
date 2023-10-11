@@ -7,6 +7,8 @@ import ca.gbc.socialservice.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +35,22 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void deleteProduct(String productId) {
-        log.info("Post {} is deleted", productId);
-        postRepository.deleteById(productId);
+    public void deletePost(String postId) {
+        log.info("Post {} is deleted", postId);
+        postRepository.deleteById(postId);
+    }
+
+    @Override
+    public void updatePost(String postId, PostRequest postRequest) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(postId));
+        Post post = mongoTemplate.findOne(query,Post.class);
+
+        if(post != null){
+            post.setContent(postRequest.getContent());
+            post.setTimestamp(postRequest.getTimestamp());
+            postRepository.save(post);
+        }
     }
 
     @Override

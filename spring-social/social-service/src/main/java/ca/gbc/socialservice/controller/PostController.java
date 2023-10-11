@@ -3,6 +3,7 @@ package ca.gbc.socialservice.controller;
 
 import ca.gbc.socialservice.dto.PostRequest;
 import ca.gbc.socialservice.dto.PostResponse;
+import ca.gbc.socialservice.dto.UserRequest;
 import ca.gbc.socialservice.service.PostServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -30,10 +31,14 @@ public class PostController {
     public List<PostResponse> getAllPosts(){
         return postService.getAllPosts();
     }
-
+    @PutMapping({"/{postId}"})
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updatePost(@PathVariable("postId") String postId, @RequestBody PostRequest postRequest) {
+        postService.updatePost(postId, postRequest);
+    }
     @DeleteMapping("/{postId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePost(@PathVariable("postId") String postId){
-        postService.deleteProduct(postId);
+        postService.deletePost(postId);
     }
 }

@@ -29,7 +29,7 @@ public class UserController {
     }
     @PutMapping({"/{userId}"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateProduct(@PathVariable("userId") Long userId, @RequestBody UserRequest userRequest) {
+    public void updateComment(@PathVariable("userId") Long userId, @RequestBody UserRequest userRequest) {
         userService.updateUser(userId, userRequest);
     }
     @DeleteMapping("/{userId}")
