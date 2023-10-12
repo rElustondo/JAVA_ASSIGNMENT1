@@ -10,6 +10,7 @@ import java.util.UUID;
 @Entity
 public class UserEnt {
     @Id
+    @Getter
     private Long id;
     @Getter
     @Setter
@@ -17,24 +18,19 @@ public class UserEnt {
     @Getter
     @Setter
     private String email;
+    @Getter
+    @Setter
+    private String password;
 
-    public UserEnt(String username, String email){
+    public UserEnt(String username, String email, String password){
         this.id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;
         this.username = username;
         this.email = email;
+        this.password = password;
     }
     public UserEnt(){
 
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments;

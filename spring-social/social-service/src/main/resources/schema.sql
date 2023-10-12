@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS "USER_ENT" CASCADE;
 CREATE TABLE "USER_ENT" (
                         id LONG PRIMARY KEY AUTO_INCREMENT,
                         username VARCHAR(255),
-                        email VARCHAR(255)
+                        email VARCHAR(255),
+                        password VARCHAR(255)
 
 );
 DROP TABLE IF EXISTS "COMMENT";

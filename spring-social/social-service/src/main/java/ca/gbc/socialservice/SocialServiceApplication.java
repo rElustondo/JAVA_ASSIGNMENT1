@@ -23,10 +23,10 @@ public class SocialServiceApplication {
         });
     }
     private void insertUserData(UserRepository repository){
-        UserEnt user1 = new UserEnt("Tim1","tim1@abc.ca");
+        UserEnt user1 = new UserEnt("Tim1","tim1@abc.ca","12345");
         System.out.println(user1.getId());
         System.out.println(user1.getEmail());
-        UserEnt user2 = new UserEnt("Tim2","tim2@abc.ca");
+        UserEnt user2 = new UserEnt("Tim2","tim2@abc.ca","asd123");
         System.out.println(user2.getId());
         System.out.println(user2.getEmail());
         repository.save(user1);
