@@ -25,7 +25,7 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=rootadmin
       - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - ./data/mongo/products:/data/db
+      - ./data/mongo/posts:/data/db
       - ./init/mongo/docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     container_name: mongodb-java-assignment-1
     restart: unless-stopped
