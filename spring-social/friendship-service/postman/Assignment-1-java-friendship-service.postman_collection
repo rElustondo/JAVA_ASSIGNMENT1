@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "7d5669f4-1d96-40c6-a792-3642924fde46",
+		"name": "Assignment 1 java friendship-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29569814"
+	},
+	"item": [
+		{
+			"name": "get all friend requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/friend-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friend-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new friend request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderId\":320238602401828173,\r\n    \"receiverId\":3812198751451694343,\r\n    \"status\":\"pending\",\r\n    \"timestamp\": \"Oct 13th\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/friend-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friend-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update friend request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"senderId\": \"320238602401828173\",\r\n        \"receiverId\": \"3812198751451694343\",\r\n        \"status\": \"accepted\",\r\n        \"timestamp\": \"Oct 13th\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/friend-requests/6529b9194fef8e0f13088fe6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"friend-requests",
+						"6529b9194fef8e0f13088fe6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete friend request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
