@@ -17,6 +17,21 @@ services:
     networks:
       - spring
 
+  friendship-service:
+    image: friendship-service
+    ports:
+      - "8085:8085"
+    build:
+      context: ./friendship-service
+      dockerfile: ./Dockerfile
+    container_name: friendship-service
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - mongodb
+    networks:
+      - spring
+
   mongodb:
     image: mongo:latest
     ports:

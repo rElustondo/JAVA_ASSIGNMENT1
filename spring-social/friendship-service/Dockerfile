@@ -29,14 +29,24 @@ FROM openjdk:17-alpine
 
 RUN mkdir /app
 
+<<<<<<< HEAD
 COPY --from=builder /home/gradle/src/build/libs/*.jar /app/social-service.jar/
+=======
+COPY --from=builder /home/gradle/src/build/libs/*.jar /app/friendship-service.jar
+>>>>>>> origin/main
 
 ENV MONGO_DB_USERNAME=rootadmin \
     MONGO_DB_PWD=password
 
+<<<<<<< HEAD
 EXPOSE 8084
 
 ENTRYPOINT ["java", "-jar", "/app/social-service.jar"]
+=======
+EXPOSE 8085
+
+ENTRYPOINT ["java", "-jar", "/app/friendship-service.jar"]
+>>>>>>> origin/main
 
 
 
