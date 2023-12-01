@@ -1,9 +1,6 @@
 package ca.gbc.socialservice.service;
 
-import ca.gbc.socialservice.dto.CommentRequest;
-import ca.gbc.socialservice.dto.CommentResponse;
-import ca.gbc.socialservice.dto.UserRequest;
-import ca.gbc.socialservice.dto.UserResponse;
+import ca.gbc.socialservice.dto.*;
 import ca.gbc.socialservice.entities.Comment;
 import ca.gbc.socialservice.entities.UserEnt;
 import ca.gbc.socialservice.repository.CommentRepository;
@@ -26,9 +23,24 @@ public class CommentServiceImpl implements CommentService{
 
     @Value("${user.service.uri}")
     private String userApiUri;
+    @Value("${post.service.uri}")
+    private String postApiUri;
 
     @Override
     public void createComment(CommentRequest commentRequest) {
+        // making sure there is a post with that id
+        List<PostResponse> postResponseList = webClient
+                .get()
+                .uri(postApiUri)
+                .retrieve()
+                .bodyToFlux(PostResponse.class)
+                .collectList()
+                .block();
+        PostResponse matchingPost = postResponseList.stream()
+                .filter(post -> post.getId().equals(commentRequest.getPostId()))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Post with ID " + commentRequest.getPostId() + " not found"));
+        // making sure there is a user with that id and adding the details of username to the comment
         List<UserResponse> userResponseList = webClient
                 .get()
                 .uri(userApiUri)
@@ -42,7 +54,7 @@ public class CommentServiceImpl implements CommentService{
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("User with ID " + commentRequest.getUserId() + " not found"));
 
-        Comment newUser = new Comment(commentRequest.getContent(),commentRequest.getTimestamp(),commentRequest.getUserId(),matchingUser.getUsername());
+        Comment newUser = new Comment(commentRequest.getContent(),commentRequest.getTimestamp(),matchingUser.getId(),matchingUser.getUsername(), matchingPost.getId());
         commentRepository.save(newUser);
     }
 
@@ -65,7 +77,6 @@ public class CommentServiceImpl implements CommentService{
     @Override
     public List<CommentResponse> getAllComments() {
         List<Comment> comments = (List<Comment>) commentRepository.findAll();
-        log.info("commentsAAAA {} before mapping", comments.size());
         return comments.stream().map(this::mapToCommentResponse).toList();
     }
     private CommentResponse mapToCommentResponse(Comment comment){
@@ -75,6 +86,7 @@ public class CommentServiceImpl implements CommentService{
                 .timestamp(comment.getTimestamp())
                 .userId(comment.getUserId())
                 .username(comment.getUsername())
+                .postId(comment.getPostId())
                 .build();
     }
 }

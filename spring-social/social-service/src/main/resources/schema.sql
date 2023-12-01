@@ -12,5 +12,6 @@ CREATE TABLE "COMMENT" (
                         content VARCHAR(255),
                         timestamp VARCHAR(255),
                         user_id LONG,
-                        username VARCHAR(255)
+                        username VARCHAR(255),
+                        post_id VARCHAR(255)
 );

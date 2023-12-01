@@ -3,7 +3,9 @@ package ca.gbc.socialservice.service;
 import ca.gbc.socialservice.dto.PostRequest;
 import ca.gbc.socialservice.dto.PostResponse;
 import ca.gbc.socialservice.dto.UserResponse;
+import ca.gbc.socialservice.entities.Comment;
 import ca.gbc.socialservice.model.Post;
+import ca.gbc.socialservice.repository.CommentRepository;
 import ca.gbc.socialservice.repository.PostRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +19,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +30,7 @@ import java.util.List;
 @Slf4j
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
+    private final CommentRepository commentRepository;
     private final MongoTemplate mongoTemplate;
     private final WebClient webClient;
 
@@ -84,15 +90,27 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<PostResponse> getAllPosts() {
         List<Post> posts = postRepository.findAll();
-        return posts.stream().map(this::mapToProductResponse).toList();
+        Map<String, List<Comment>> postCommentsMap = getCommentsForPosts(); // Retrieve comments for each post
+        return posts.stream()
+                .map(post -> mapToProductResponse(post, postCommentsMap.getOrDefault(post.getId(), Collections.emptyList())))
+                .toList();
     }
-    private PostResponse mapToProductResponse(Post post){
+    private PostResponse mapToProductResponse(Post post, List<Comment> comments){
+        List<Comment> postComments = comments.stream()
+                .filter(comment -> comment.getPostId().equals(post.getId()))
+                .collect(Collectors.toList());
         return PostResponse.builder()
                 .id(post.getId())
                 .content(post.getContent())
                 .timestamp(post.getTimestamp())
                 .userId(post.getUserId())
                 .username(post.getUsername())
+                .comments(postComments)
                 .build();
+    }
+    private Map<String, List<Comment>> getCommentsForPosts() {
+        List<Comment> comments = (List<Comment>) commentRepository.findAll();
+        return comments.stream()
+                .collect(Collectors.groupingBy(Comment::getPostId));
     }
 }
