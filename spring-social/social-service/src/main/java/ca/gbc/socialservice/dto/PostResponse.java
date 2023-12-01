@@ -15,5 +15,6 @@ public class PostResponse {
     private String id;
     private String content;
     private String timestamp;
-
+    private Long userId;
+    private String username;
 }

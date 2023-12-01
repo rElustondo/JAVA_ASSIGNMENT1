@@ -14,4 +14,5 @@ import java.time.LocalDateTime;
 public class PostRequest {
     private String content;
     private String timestamp;
+    private Long userId;
 }
