@@ -29,16 +29,11 @@ FROM openjdk:17-alpine
 
 RUN mkdir /app
 
-COPY --from=builder /home/gradle/src/build/libs/*.jar /app/friendship-service.jar
+COPY --from=builder /home/gradle/src/build/libs/*.jar /app/discovery-service.jar
 
-ENV MONGO_DB_USERNAME=rootadmin \
-    MONGO_DB_PWD=password
+EXPOSE 8761
 
-
-EXPOSE 8085
-
-ENTRYPOINT ["java", "-jar", "/app/friendship-service.jar"]
-
+ENTRYPOINT ["java", "-jar", "/app/discovery-service.jar"]
 
 
 

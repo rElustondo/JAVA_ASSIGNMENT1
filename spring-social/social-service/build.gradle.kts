@@ -27,6 +27,7 @@ dependencies {
     testImplementation("org.testcontainers:mongodb:1.18.1")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     runtimeOnly("com.h2database:h2")
+    implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.3")
 }
 
 tasks.withType<Test> {
