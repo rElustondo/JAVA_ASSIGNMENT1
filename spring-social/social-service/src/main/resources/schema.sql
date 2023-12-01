@@ -12,5 +12,5 @@ CREATE TABLE "COMMENT" (
                         content VARCHAR(255),
                         timestamp VARCHAR(255),
                         user_id LONG,
-                        FOREIGN KEY (user_id) REFERENCES USER_ENT(id)
+                        username VARCHAR(255)
 );

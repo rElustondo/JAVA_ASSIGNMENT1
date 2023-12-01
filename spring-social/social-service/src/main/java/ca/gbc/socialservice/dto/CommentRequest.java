@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class CommentRequest {
     private String content;
     private String timestamp;
+    private Long userId;
 }

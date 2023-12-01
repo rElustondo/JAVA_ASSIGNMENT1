@@ -32,6 +32,5 @@ public class UserEnt {
 
     }
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+
 }
