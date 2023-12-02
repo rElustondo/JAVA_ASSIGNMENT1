@@ -1,9 +1,6 @@
 package ca.gbc.socialservice.service;
 
-import ca.gbc.socialservice.dto.CommentRequest;
-import ca.gbc.socialservice.dto.PostResponse;
-import ca.gbc.socialservice.dto.UserRequest;
-import ca.gbc.socialservice.dto.UserResponse;
+import ca.gbc.socialservice.dto.*;
 import ca.gbc.socialservice.entities.Comment;
 import ca.gbc.socialservice.entities.UserEnt;
 import ca.gbc.socialservice.model.Post;
@@ -11,7 +8,9 @@ import ca.gbc.socialservice.repository.PostRepository;
 import ca.gbc.socialservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +20,10 @@ import java.util.Optional;
 @Slf4j
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
+    private final WebClient webClient;
+
+    @Value("${friend.service.uri}")
+    private String friendRequestApiUri;
     @Override
     public void createUser(UserRequest userRequest) {
         UserEnt newUser = new UserEnt(userRequest.getUsername(),userRequest.getEmail(), userRequest.getPassword());
@@ -47,14 +50,31 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<UserResponse> getAllUsers() {
         List<UserEnt> users = (List<UserEnt>) userRepository.findAll();
-        return users.stream().map(this::mapToUserResponse).toList();
+        List<FriendRequestResponse> allFriendRequests = webClient
+                .get()
+                .uri(friendRequestApiUri)
+                .retrieve()
+                .bodyToFlux(FriendRequestResponse.class)
+                .collectList()
+                .block();
+
+
+        return users.stream()
+                .map(user -> mapToUserResponse(user, allFriendRequests))
+                .toList();
     }
-    private UserResponse mapToUserResponse(UserEnt user){
+    private UserResponse mapToUserResponse(UserEnt user, List<FriendRequestResponse> allFriendRequests){
+        List<FriendRequestResponse> requestsReceived = allFriendRequests.stream()
+                .filter(request -> request.getReceiverId().equals(user.getId()))
+                .toList();
+
+
         return UserResponse.builder()
                 .id(user.getId())
                 .username(user.getUsername())
                 .email(user.getEmail())
                 .password(user.getPassword())
+                .friendRequests(requestsReceived)
                 .build();
     }
 }

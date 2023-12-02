@@ -34,6 +34,9 @@ dependencies {
     implementation("org.testcontainers:testcontainers-bom:1.18.1")
     testImplementation("org.testcontainers:mongodb:1.18.1")
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:4.0.3")
+    implementation("org.springframework.boot:spring-boot-starter-webflux:3.1.5")
+    implementation("org.apache.httpcomponents.client5:httpclient5:5.2.1")
+    implementation("org.springframework.cloud:spring-cloud-starter-circuitbreaker-resilience4j:3.0.3")
 
 }
 

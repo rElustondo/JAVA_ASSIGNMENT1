@@ -1,4 +1,4 @@
-package ca.gbc.friendshipservice.dto;
+package ca.gbc.socialservice.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,5 @@
 package ca.gbc.socialservice.entities;
+import ca.gbc.socialservice.dto.FriendRequestResponse;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,8 @@ public class UserEnt {
     @Getter
     @Setter
     private String password;
+
+
 
     public UserEnt(String username, String email, String password){
         this.id = UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE;

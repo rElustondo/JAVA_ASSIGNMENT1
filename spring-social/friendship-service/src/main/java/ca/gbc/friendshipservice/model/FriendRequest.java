@@ -15,10 +15,10 @@ public class FriendRequest {
     private String id;
     @Getter
     @Setter
-    private String senderId;
+    private Long senderId;
     @Getter
     @Setter
-    private String receiverId;
+    private Long receiverId;
     @Getter
     @Setter
     private String status;
