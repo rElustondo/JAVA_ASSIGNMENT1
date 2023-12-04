@@ -15,6 +15,20 @@ services:
       - mongodb
     networks:
       - spring
+  api-gateway:
+    image: api-gateway-a2
+    ports:
+      - "8181:8181"
+    build:
+      context: ./api-gateway
+      dockerfile: ./Dockerfile
+    container_name: api-gateway-assignment2
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    depends_on:
+      - discovery-service
+    networks:
+      - spring
   social-service:
     image: social-service
     ports:

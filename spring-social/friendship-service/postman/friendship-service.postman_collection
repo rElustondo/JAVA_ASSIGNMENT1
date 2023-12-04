@@ -12,12 +12,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/friend-requests",
+					"raw": "http://localhost:8181/api/friend-requests",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8181",
 					"path": [
 						"api",
 						"friend-requests"
@@ -33,7 +33,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"senderId\":320238602401828173,\r\n    \"receiverId\":3812198751451694343,\r\n    \"status\":\"pending\",\r\n    \"timestamp\": \"Oct 13th\"\r\n}",
+					"raw": "{\r\n    \"senderId\":7871722378645423171,\r\n    \"receiverId\":9020610064328443873,\r\n    \"status\":\"pending\",\r\n    \"timestamp\": \"Oct 13th\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -41,12 +41,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/friend-requests",
+					"raw": "http://localhost:8181/api/friend-requests",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8181",
 					"path": [
 						"api",
 						"friend-requests"
@@ -70,16 +70,16 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/friend-requests/6529b9194fef8e0f13088fe6",
+					"raw": "http://localhost:8181/api/friend-requests/652d3cefdb2bb045ef3f3b0e",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "8181",
 					"path": [
 						"api",
 						"friend-requests",
-						"6529b9194fef8e0f13088fe6"
+						"652d3cefdb2bb045ef3f3b0e"
 					]
 				}
 			},
@@ -88,8 +88,21 @@
 		{
 			"name": "delete friend request",
 			"request": {
-				"method": "GET",
-				"header": []
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/api/friend-requests/656a8cbcc050e3130052d183",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"friend-requests",
+						"656a8cbcc050e3130052d183"
+					]
+				}
 			},
 			"response": []
 		}

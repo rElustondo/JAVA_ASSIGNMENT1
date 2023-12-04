@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\":\"Hello from john\",\r\n    \"timestamp\":\"T, oct 5\"\r\n}\r\n",
+							"raw": "{\r\n    \"content\":\"Hello from john\",\r\n    \"timestamp\":\"T, oct 5\",\r\n    \"userId\":2035328291978365779\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -24,12 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8084/api/posts",
+							"raw": "http://localhost:8181/api/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"posts"
@@ -44,12 +44,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/api/posts",
+							"raw": "http://localhost:8181/api/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"posts"
@@ -64,12 +64,12 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/api/posts/65270a3f4e7c3123d2901835",
+							"raw": "http://localhost:8181/api/posts/65270a3f4e7c3123d2901835",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"posts",
@@ -94,12 +94,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8084/api/posts/65271be57c170e2e657d2cd8",
+							"raw": "http://localhost:8181/api/posts/65271be57c170e2e657d2cd8",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"posts",
@@ -120,12 +120,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/api/users",
+							"raw": "http://localhost:8181/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"users"
@@ -149,12 +149,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8084/api/users",
+							"raw": "http://localhost:8181/api/users",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"users"
@@ -226,7 +226,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"content\":\"Hi this is my comment\",\r\n    \"timestamp\":\"W, oct 7\"\r\n}\r\n",
+							"raw": "{\r\n    \"content\":\"Hi this is my comment\",\r\n    \"timestamp\":\"W, oct 7\",\r\n    \"userId\":8504964834110885061,\r\n    \"postId\":\"656a58aceec02c4ef2e0b158\"\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -234,12 +234,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8084/api/comments",
+							"raw": "http://localhost:8181/api/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"comments"
@@ -254,12 +254,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8084/api/comments",
+							"raw": "http://localhost:8181/api/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"comments"
@@ -304,12 +304,12 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8084/api/comments/659755777415792978",
+							"raw": "http://localhost:8181/api/comments/659755777415792978",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
-							"port": "8084",
+							"port": "8181",
 							"path": [
 								"api",
 								"comments",
