@@ -1,6 +1,27 @@
 version: '3.8'
 
 services:
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - "8080:8080"
+    container_name: keycloak-a2
+    environment:
+      JBOSS_LOG_MANAGER_ROOT_LOGGER: DEBUG
+      DB_VENDOR: postgres
+      DB_ADDR: postgres-keycloak-a2
+      DB_DATABASE: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: password
+      KEYCLOAK_IMPORT: /opt/jboss/keycloak/realms/realm-assignment2.json
+    volumes:
+      - ./realms/:/opt/jboss/keycloak/realms
+    depends_on:
+      - postgres-keycloak
+    restart: unless-stopped
+    networks:
+      - spring
   discovery-service:
     image: discovery-service-a2
     ports:
@@ -17,6 +38,7 @@ services:
       - spring
   api-gateway:
     image: api-gateway-a2
+    restart: unless-stopped
     ports:
       - "8181:8181"
     build:
@@ -60,7 +82,21 @@ services:
       - discovery-service
     networks:
       - spring
-
+  postgres-keycloak:
+    image: postgres:latest
+    ports:
+      - "5431:5432"
+    environment:
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: keycloak
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/postgres/postgres-keycloak:/data/postgres
+    container_name: postgres-keycloak-a2
+    restart: unless-stopped
+    networks:
+      - spring
   mongodb:
     image: mongo:latest
     ports:
