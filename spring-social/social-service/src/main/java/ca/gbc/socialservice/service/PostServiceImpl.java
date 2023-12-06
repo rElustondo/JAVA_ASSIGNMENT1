@@ -38,7 +38,7 @@ public class PostServiceImpl implements PostService {
     private String userApiUri;
 
     @Override
-    public void createPost(PostRequest postRequest) {
+    public String createPost(PostRequest postRequest) {
         log.info("Creating a new post {}", postRequest.getContent());
 
         List<UserResponse> userResponseList = webClient
@@ -63,8 +63,9 @@ public class PostServiceImpl implements PostService {
                 .build();
 
         postRepository.save(post);
-
         log.info("Post {} is saved", post.getId());
+        return "Post Created Successfully";
+
 
     }
 

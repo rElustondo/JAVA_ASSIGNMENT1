@@ -20,7 +20,7 @@ public class FriendRequestServiceImpl implements  FriendRequestService{
     private final FriendRequestRepository friendRequestRepository;
     private final MongoTemplate mongoTemplate;
     @Override
-    public void createFriendRequest(FriendRequestRequest friendRequestRequest) {
+    public String createFriendRequest(FriendRequestRequest friendRequestRequest) {
         FriendRequest friendRequest = FriendRequest.builder()
                 .senderId(friendRequestRequest.getSenderId())
                 .receiverId(friendRequestRequest.getReceiverId())
@@ -28,7 +28,7 @@ public class FriendRequestServiceImpl implements  FriendRequestService{
                 .timestamp(friendRequestRequest.getTimestamp())
                 .build();
         friendRequestRepository.save(friendRequest);
-
+        return "Friend Request Placed Successfully";
     }
 
     @Override

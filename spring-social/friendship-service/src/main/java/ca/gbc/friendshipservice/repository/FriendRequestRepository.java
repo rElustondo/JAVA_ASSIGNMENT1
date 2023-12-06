@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface FriendRequestRepository extends MongoRepository<FriendRequest, String> {
     @DeleteQuery
-    void deleteById(UUID postId);
+    void deleteById(String postId);
 }

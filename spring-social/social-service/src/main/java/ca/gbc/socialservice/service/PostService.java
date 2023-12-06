@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface PostService {
 
-    void createPost(PostRequest postRequest);
+    String createPost(PostRequest postRequest);
 
     void deletePost(String postId);
 

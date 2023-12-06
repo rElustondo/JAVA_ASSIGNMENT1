@@ -6,7 +6,7 @@ import ca.gbc.socialservice.dto.UserResponse;
 import java.util.List;
 
 public interface UserService {
-    void createUser(UserRequest userRequest);
+    String createUser(UserRequest userRequest);
 
     void deleteUser(Long productId);
 

@@ -6,7 +6,7 @@ import ca.gbc.socialservice.dto.CommentResponse;
 import java.util.List;
 
 public interface CommentService {
-    void createComment(CommentRequest commentRequest);
+    String createComment(CommentRequest commentRequest);
 
     void deleteComment(Long productId);
 

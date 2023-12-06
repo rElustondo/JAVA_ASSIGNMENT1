@@ -6,7 +6,7 @@ import ca.gbc.friendshipservice.dto.FriendRequestResponse;
 import java.util.List;
 
 public interface FriendRequestService {
-    void createFriendRequest(FriendRequestRequest friendRequestRequest);
+    String createFriendRequest(FriendRequestRequest friendRequestRequest);
 
     void deleteFriendRequest(String friendRequestId);
 

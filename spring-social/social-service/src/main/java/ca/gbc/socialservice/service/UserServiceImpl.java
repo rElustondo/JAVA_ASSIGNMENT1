@@ -25,9 +25,10 @@ public class UserServiceImpl implements UserService{
     @Value("${friend.service.uri}")
     private String friendRequestApiUri;
     @Override
-    public void createUser(UserRequest userRequest) {
+    public String createUser(UserRequest userRequest) {
         UserEnt newUser = new UserEnt(userRequest.getUsername(),userRequest.getEmail(), userRequest.getPassword());
         userRepository.save(newUser);
+        return "User Created Successfully";
     }
 
     @Override

@@ -27,7 +27,7 @@ public class CommentServiceImpl implements CommentService{
     private String postApiUri;
 
     @Override
-    public void createComment(CommentRequest commentRequest) {
+    public String createComment(CommentRequest commentRequest) {
         // making sure there is a post with that id
         List<PostResponse> postResponseList = webClient
                 .get()
@@ -56,6 +56,7 @@ public class CommentServiceImpl implements CommentService{
 
         Comment newUser = new Comment(commentRequest.getContent(),commentRequest.getTimestamp(),matchingUser.getId(),matchingUser.getUsername(), matchingPost.getId());
         commentRepository.save(newUser);
+        return "Comment Created Successfully";
     }
 
     @Override
