@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "7d5669f4-1d96-40c6-a792-3642924fde46",
+		"name": "Assignment 1 java friendship-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29569814"
+	},
+	"item": [
+		{
+			"name": "get all friend requests",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fgAT63i8fHBG8qkffj5vnJCJLLHCUold",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://keycloak:8080/auth/realms/assignment2/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "assignment2-client",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/api/friend-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"friend-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create new friend request",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fgAT63i8fHBG8qkffj5vnJCJLLHCUold",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://keycloak:8080/auth/realms/assignment2/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "assignment2-client",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"senderId\":7871722378645423171,\r\n    \"receiverId\":9020610064328443873,\r\n    \"status\":\"pending\",\r\n    \"timestamp\": \"Oct 13th\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/friend-requests",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"friend-requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update friend request",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fgAT63i8fHBG8qkffj5vnJCJLLHCUold",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://keycloak:8080/auth/realms/assignment2/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "assignment2-client",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"senderId\": \"320238602401828173\",\r\n        \"receiverId\": \"3812198751451694343\",\r\n        \"status\": \"accepted\",\r\n        \"timestamp\": \"Oct 13th\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/api/friend-requests/652d3cefdb2bb045ef3f3b0e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"friend-requests",
+						"652d3cefdb2bb045ef3f3b0e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete friend request",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "fgAT63i8fHBG8qkffj5vnJCJLLHCUold",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "http://keycloak:8080/auth/realms/assignment2/protocol/openid-connect/token",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "assignment2-client",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/api/friend-requests/656a8cbcc050e3130052d183",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"api",
+						"friend-requests",
+						"656a8cbcc050e3130052d183"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
