@@ -38,14 +38,14 @@ class FriendshipServiceApplicationTests extends AbstractContainerTests {
 
     private List<FriendRequest> getFriends() {
         return Arrays.asList(
-                FriendRequest.builder().senderId("1").timestamp("June 3").build(),
-                FriendRequest.builder().senderId("2").timestamp("June 4").build()
+                FriendRequest.builder().senderId(1L).timestamp("June 3").build(),
+                FriendRequest.builder().senderId(2L).timestamp("June 4").build()
                 // Add more FriendRequest objects as needed
         );
     }
     private FriendRequest getFriendRequest() {
         return FriendRequest.builder()
-                .senderId("3")
+                .senderId(3L)
                 .timestamp("June 3")
                 .build();
     }
